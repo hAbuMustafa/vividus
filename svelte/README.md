@@ -10,3 +10,7 @@ All componenets try to provide accessibility, and be accessible by default, by u
 ## Planned Components
 
 - [RadialFlickMenu](./dist/components/RadialFlickMenu.md): a **higher level _alternative_** to HTML's `select` element that provides smoother and a slickier interaction for the end user to select an item of a given short-list.
+
+### Adding More
+
+For more info on how to add more components to the library, please refer to the [Adding More Components](./Adding-New-Components.md) doc.
