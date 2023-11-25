@@ -59,5 +59,8 @@
     "type": "git",
     "url": "git+https://github.com/hAbuMustafa/vividus.git"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@vividus/svelte": "^1.0.2"
+  }
 }
