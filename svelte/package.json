@@ -55,5 +55,9 @@
     "abbreviation",
     "abbr"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hAbuMustafa/vividus.git"
+  },
   "type": "module"
 }
