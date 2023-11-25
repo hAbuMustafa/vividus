@@ -40,5 +40,20 @@
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
+  "keywords": [
+    "svelte",
+    "sveltekit",
+    "vividus",
+    "lively",
+    "reactive",
+    "ui",
+    "component",
+    "select menu",
+    "menu",
+    "radial menu",
+    "flick menu",
+    "abbreviation",
+    "abbr"
+  ],
   "type": "module"
 }

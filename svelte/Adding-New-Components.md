@@ -9,6 +9,7 @@
 2. Import and re-export the component inside `./src/lib/index.ts`.
 3. Run `npm run package` to re-build the component library.
 4. Bump-up the version inside `package.json`.
-5. Run `npm publish` to publish the package to npm.
+5. Add keywords for the new component inside `package.json`.
+6. Run `npm publish` to publish the package to npm.
 
 [Read More](https://kit.svelte.dev/docs/packaging) in the official docs.
