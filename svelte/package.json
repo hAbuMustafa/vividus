@@ -14,7 +14,8 @@
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js",
-      "Abbr.svelte": "./dist/components/Abbr.svelte"
+      "Abbr.svelte": "./dist/components/Abbr.svelte",
+      "RadialFlickMenu.svelte": "./dist/components/RadialFlickMenu.svelte"
     }
   },
   "files": [
