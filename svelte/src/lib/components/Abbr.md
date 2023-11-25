@@ -3,8 +3,10 @@
 This component uses the native `abbr` tag to render expandable abbreviations in Svelte. It's as easy to use as just enclose the abbreviation letters in square brackets, and it'll do the rest for you:
 
 ```svelte
-import {Abbr} from "@vividus/svelte";
-...
+<script>
+  import {Abbr} from "@vividus/svelte";
+</script>
+
 <Abbr title="[m]essenger [R]ibo-[N]ucleic [A]cid" />
 ```
 
