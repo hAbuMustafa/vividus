@@ -1,7 +1,8 @@
 # VIVIDUS Component Library for Svelte.JS
 
-Vividus is a "lively" compnent library, Its main purpose is to add life and modernization to standard HTML elements, or add higher levels of modernity to them.
-All componenets try to provide accessibility, and be accessible by default, by using semantic markup.
+Read more about the library in the main repo [here](../README.md)...
+
+The svelte version currently has the following components:
 
 ## Components
 
