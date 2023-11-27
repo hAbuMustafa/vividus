@@ -1,5 +1,5 @@
 <script>
-  import { Abbr } from '@vividus/svelte';
+  import Abbr from '$lib/components/Abbr.svelte';
 </script>
 
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint magni, excepturi corrupti
