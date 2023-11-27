@@ -13,7 +13,6 @@
   const segments = title.match(/[^\[\]]+/g)!;
 </script>
 
-<!-- bug: props are not injected -->
 <abbr
   title={useTitle ? cleanTitle : null}
   aria-label={cleanTitle.toLowerCase()}
