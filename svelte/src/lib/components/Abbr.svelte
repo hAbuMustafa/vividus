@@ -58,7 +58,7 @@
     }
   }
 
-  abbr:hover .rest {
+  abbr:is(:hover, :active) .rest {
     width: var(--full-width);
   }
 </style>
