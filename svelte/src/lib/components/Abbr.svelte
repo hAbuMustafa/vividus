@@ -27,11 +27,11 @@
       {#if i % 2}
         {segment}
       {:else}
-        <span class="rest" style:--width="{segment.length}ch">{segment}</span>
+        <span class="rest" style:--full-width="{segment.length}ch">{segment}</span>
       {/if}
     {:else if !shift}
       {#if i % 2}
-        <span class="rest" style:--width="{segment.length}ch">{segment}</span>
+        <span class="rest" style:--full-width="{segment.length}ch">{segment}</span>
       {:else}
         {segment}
       {/if}
@@ -59,6 +59,6 @@
   }
 
   abbr:hover .rest {
-    width: var(--width);
+    width: var(--full-width);
   }
 </style>
