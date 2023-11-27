@@ -27,8 +27,13 @@ ratione iste praesentium? Unde deleniti incidunt laborum neque! Quod beatae maxi
 culpa ipsam corporis reiciendis deleniti, quis repellendus in nam deserunt, ipsa commodi
 voluptatibus accusamus natus suscipit maiores voluptas odit vitae. Nulla optio, qui alias
 ullam eligendi rem ab molestiae illum, aut dicta reprehenderit consequatur minima
-voluptatibus <Abbr title="[m]essenger [R]ibo-[N]ucleic [A]cid" styles="color:red;" /> quidem
-deleniti sint amet est. Officia natus laudantium quidem animi nihil quae culpa, architecto
+voluptatibus <Abbr
+  title="[m]essenger [R]ibo-[N]ucleic [A]cid"
+  styles="color:red;"
+  easing="cubic-bezier(.5, 1, .75, 1.25)"
+  delay="2"
+  duration="2"
+/> quidem deleniti sint amet est. Officia natus laudantium quidem animi nihil quae culpa, architecto
 mollitia ipsum. Error sequi illo animi, minima excepturi quasi, enim suscipit eos necessitatibus
 est a saepe cum nihil? Iste, laboriosam, hic neque eius id facilis voluptas beatae non officia
 dolorum quisquam eos quasi optio aut tempora reprehenderit nobis nemo quos cumque ad recusandae
