@@ -18,7 +18,7 @@ You can customize bits of the component's behavior and looks by passing in props
 
 ### Customize Transition
 
-By default the transition duration is `0.7` seconds, and the easing function is `ease-in-out`. You can customize these by passing in the `duration`, and `easing` props.
+You can customize the different parts of the transition. By default, the transition duration is `0.7` seconds, the easing function is `ease-in-out`, and the delay is `0` seconds. You can customize these by passing in the `duration`, `easing`, and `delay` props, respectively.
 
 ```svelte
 <Abbr title="[W]orld [H]ealth [O]rganization" duration="2" easing="ease-out" />
