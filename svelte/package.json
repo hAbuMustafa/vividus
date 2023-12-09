@@ -1,6 +1,6 @@
 {
   "name": "@vividus/svelte",
-  "version": "1.0.2.1",
+  "version": "1.0.3",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
