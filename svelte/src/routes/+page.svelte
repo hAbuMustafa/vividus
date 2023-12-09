@@ -29,10 +29,9 @@ voluptatibus accusamus natus suscipit maiores voluptas odit vitae. Nulla optio, 
 ullam eligendi rem ab molestiae illum, aut dicta reprehenderit consequatur minima
 voluptatibus <Abbr
   title="[m]essenger [R]ibo-[N]ucleic [A]cid"
+  --easing="cubic-bezier(.5, 1, .75, 1.25)"
+  --duration="0.5s"
   styles="color:red;"
-  easing="cubic-bezier(.5, 1, .75, 1.25)"
-  delay="2"
-  duration="2"
 /> quidem deleniti sint amet est. Officia natus laudantium quidem animi nihil quae culpa, architecto
 mollitia ipsum. Error sequi illo animi, minima excepturi quasi, enim suscipit eos necessitatibus
 est a saepe cum nihil? Iste, laboriosam, hic neque eius id facilis voluptas beatae non officia

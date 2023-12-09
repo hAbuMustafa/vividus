@@ -1,9 +1,6 @@
 <script lang="ts">
   export let title: string;
   export let styles: string = '';
-  export let easing: string = 'ease-in-out';
-  export let duration: string = '0.7';
-  export let delay: string = '0';
   export let useTitle: boolean = true;
   export let useTransition: boolean = true;
 
@@ -17,9 +14,6 @@
   title={useTitle ? cleanTitle : null}
   aria-label={cleanTitle.toLowerCase()}
   style={styles ?? null}
-  style:--easing={easing}
-  style:--duration="{duration}s"
-  style:--delay="{delay}s"
   class:useTransition
 >
   {#each segments as segment, i}
@@ -54,7 +48,7 @@
 
   abbr.useTransition .rest {
     @media (prefers-reduced-motion: no-preference) {
-      transition: width var(--duration) var(--easing) var(--delay);
+      transition: width var(--duration, 0.7s) var(--easing, ease-in-out) var(--delay, 0s);
     }
   }
 
