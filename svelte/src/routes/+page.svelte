@@ -1,5 +1,6 @@
 <script>
   import Abbr from '$lib/components/Abbr.svelte';
+  import Table from '$lib/components/Table.svelte';
 </script>
 
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint magni, excepturi corrupti
@@ -15,19 +16,26 @@ perferendis tenetur laboriosam ratione doloremque quisquam eos rerum suscipit mi
 voluptatum reiciendis illo, libero voluptatem placeat nam est eaque id quidem dolorem
 possimus. Et rem earum libero a ea eaque officia numquam eum perferendis! Voluptatem
 doloribus consectetur perferendis sit rem, quasi omnis tenetur, maxime suscipit maiores
-minima nesciunt! Distinctio molestiae nostrum nulla totam deserunt animi perferendis
-doloremque facere id laudantium. Earum, aspernatur enim? Dolore illum dolor, repellat
-architecto veniam, velit quis blanditiis facere ipsum similique enim libero eveniet nemo
-labore? Delectus vel quos dolore asperiores sed magni dolores quidem earum ipsa
-consectetur velit adipisci eveniet quo cupiditate, iste eum aut nihil. Maxime accusamus
-excepturi facilis fugit accusantium maiores odit aspernatur, doloribus quo, iure ratione
-laudantium vel itaque earum quos optio architecto nemo dolor perferendis eum ducimus
-veritatis aut sunt eveniet? Rem, nostrum inventore molestias numquam minima quos assumenda
-ratione iste praesentium? Unde deleniti incidunt laborum neque! Quod beatae maxime quasi
-culpa ipsam corporis reiciendis deleniti, quis repellendus in nam deserunt, ipsa commodi
-voluptatibus accusamus natus suscipit maiores voluptas odit vitae. Nulla optio, qui alias
-ullam eligendi rem ab molestiae illum, aut dicta reprehenderit consequatur minima
-voluptatibus <Abbr
+<Table
+  data={[
+    ['id', 'name', 'email'],
+    ['1', 'Jane', 'jane@smith.com'],
+    ['2', 'John', 'john@smith.com'],
+    ['3', 'Jessica', 'jessica@smith.com'],
+  ]}
+></Table>
+minima nesciunt! Distinctio molestiae nostrum nulla totam deserunt animi perferendis doloremque
+facere id laudantium. Earum, aspernatur enim? Dolore illum dolor, repellat architecto veniam,
+velit quis blanditiis facere ipsum similique enim libero eveniet nemo labore? Delectus vel
+quos dolore asperiores sed magni dolores quidem earum ipsa consectetur velit adipisci eveniet
+quo cupiditate, iste eum aut nihil. Maxime accusamus excepturi facilis fugit accusantium maiores
+odit aspernatur, doloribus quo, iure ratione laudantium vel itaque earum quos optio architecto
+nemo dolor perferendis eum ducimus veritatis aut sunt eveniet? Rem, nostrum inventore molestias
+numquam minima quos assumenda ratione iste praesentium? Unde deleniti incidunt laborum neque!
+Quod beatae maxime quasi culpa ipsam corporis reiciendis deleniti, quis repellendus in nam
+deserunt, ipsa commodi voluptatibus accusamus natus suscipit maiores voluptas odit vitae. Nulla
+optio, qui alias ullam eligendi rem ab molestiae illum, aut dicta reprehenderit consequatur
+minima voluptatibus <Abbr
   title="[m]essenger [R]ibo-[N]ucleic [A]cid"
   --easing="cubic-bezier(.5, 1, .75, 1.25)"
   --duration="0.5s"
