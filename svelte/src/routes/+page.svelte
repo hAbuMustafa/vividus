@@ -1,6 +1,6 @@
 <script>
   import Abbr from '$lib/components/Abbr.svelte';
-  import Table from '$lib/components/Table.svelte';
+  import Table from '$lib/components/Table2.svelte';
 </script>
 
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint magni, excepturi corrupti
@@ -17,12 +17,21 @@ voluptatum reiciendis illo, libero voluptatem placeat nam est eaque id quidem do
 possimus. Et rem earum libero a ea eaque officia numquam eum perferendis! Voluptatem
 doloribus consectetur perferendis sit rem, quasi omnis tenetur, maxime suscipit maiores
 <Table
-  data={[
-    ['id', 'name', 'email'],
-    ['1', 'Jane', 'jane@smith.com'],
-    ['2', 'John', 'john@smith.com'],
-    ['3', 'Jessica', 'jessica@smith.com'],
-  ]}
+  data={{
+    caption: { content: 'Table 1: Table caption', side: 'bottom' },
+    thead: [
+      ['c1', { content: 'c2', colspan: 2 }],
+      ['c4', 'c5', 'c6'],
+    ],
+    rows: [
+      [
+        { content: 'hey', scope: 'row' },
+        { content: 'mate', rowspan: 2 },
+      ],
+      [{ content: 'Oh Hi', scope: 'row' }],
+    ],
+    tfoot: [[{ content: 'hello', scope: 'row' }, '', 'Hi']],
+  }}
 ></Table>
 minima nesciunt! Distinctio molestiae nostrum nulla totam deserunt animi perferendis doloremque
 facere id laudantium. Earum, aspernatur enim? Dolore illum dolor, repellat architecto veniam,
