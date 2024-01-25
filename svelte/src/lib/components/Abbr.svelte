@@ -1,8 +1,10 @@
 <script lang="ts">
   export let title: string;
-  export let styles: string = '';
-  export let useTitle: boolean = true;
-  export let useTransition: boolean = true;
+  export let styles = '';
+  export let partStyles = '';
+  export let segmentStyles = '';
+  export let useTitle = true;
+  export let useTransition = true;
 
   const cleanTitle = title.replace(/[\[\]]/g, '');
   const shift = title.charAt(0) !== '[';
@@ -19,15 +21,23 @@
   {#each segments as segment, i}
     {#if shift}
       {#if i % 2}
-        <span class="part">{segment}</span>
+        <span class="part" style={partStyles ?? null}>{segment}</span>
       {:else}
-        <span class="rest" style:--full-width="{segment.length}ch">{segment}</span>
+        <span
+          class="rest"
+          style:--full-width="{segment.length}ch"
+          style={segmentStyles ?? null}>{segment}</span
+        >
       {/if}
     {:else if !shift}
       {#if i % 2}
-        <span class="rest" style:--full-width="{segment.length}ch">{segment}</span>
+        <span
+          class="rest"
+          style:--full-width="{segment.length}ch"
+          style={segmentStyles ?? null}>{segment}</span
+        >
       {:else}
-        <span class="part">{segment}</span>
+        <span class="part" style={partStyles ?? null}>{segment}</span>
       {/if}
     {/if}
   {/each}
