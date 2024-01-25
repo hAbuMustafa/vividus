@@ -19,7 +19,7 @@
   {#each segments as segment, i}
     {#if shift}
       {#if i % 2}
-        {segment}
+        <span class="part">{segment}</span>
       {:else}
         <span class="rest" style:--full-width="{segment.length}ch">{segment}</span>
       {/if}
@@ -27,7 +27,7 @@
       {#if i % 2}
         <span class="rest" style:--full-width="{segment.length}ch">{segment}</span>
       {:else}
-        {segment}
+        <span class="part">{segment}</span>
       {/if}
     {/if}
   {/each}
@@ -35,14 +35,19 @@
 
 <style>
   abbr {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: monospace;
     text-decoration: none;
+  }
+
+  abbr .part {
+    vertical-align: text-bottom;
   }
 
   abbr .rest {
     display: inline-block;
     overflow-x: hidden;
-    vertical-align: bottom;
+    vertical-align: text-bottom;
+
     width: 0;
   }
 
