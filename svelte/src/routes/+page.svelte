@@ -1,6 +1,5 @@
 <script>
   import Abbr from '$lib/components/Abbr.svelte';
-  import Table from '$lib/components/Table.svelte';
 </script>
 
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint magni, excepturi corrupti
