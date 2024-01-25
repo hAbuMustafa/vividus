@@ -47,7 +47,7 @@
   {/each}
 </abbr>
 
-<style>
+<style lang="scss">
   abbr {
     font-family: monospace;
     text-decoration: none;
