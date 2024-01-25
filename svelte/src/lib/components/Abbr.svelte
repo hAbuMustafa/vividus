@@ -26,16 +26,20 @@
         <span
           class="rest"
           style:--full-width="{segment.length}ch"
-          style={segmentStyles ?? null}>{segment}</span
+          style={segmentStyles ?? null}
         >
+          {segment}
+        </span>
       {/if}
     {:else if !shift}
       {#if i % 2}
         <span
           class="rest"
           style:--full-width="{segment.length}ch"
-          style={segmentStyles ?? null}>{segment}</span
+          style={segmentStyles ?? null}
         >
+          {segment}
+        </span>
       {:else}
         <span class="part" style={partStyles ?? null}>{segment}</span>
       {/if}
