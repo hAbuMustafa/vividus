@@ -49,10 +49,13 @@
   {#each options as item, i (i)}
     <g>
       <path
-        style="transform-origin: 0 100%;"
+        class="radial-menu-item"
+        style="rotate: {i * itemPercent * 360}deg;"
         stroke={showBorder ? borderColor : null}
         fill="green"
         id={`rmi-${i}`}
+        role="menuitem"
+        tabindex="0"
         d="
         M {menuCenter} 0
         {getArc(menuCenter, menuCenter, menuRadius, itemPercent * 360, 0)} 
@@ -72,8 +75,6 @@
         )}
         Z
       "
-        role="menuitem"
-        tabindex="0"
       />
       <text font-size="2" fill="black">
         <textPath href={`#rmi-${i}`} text-anchor="middle" method="align">
@@ -97,3 +98,15 @@
     stroke-dasharray="5 3 3 4"
   />
 </svg>
+
+<style>
+  path {
+    transform-origin: 50% 50%;
+    transition: all 0.5s ease-in-out;
+  }
+
+  path:hover,
+  path:focus {
+    transform: scale(1.1);
+  }
+</style>
