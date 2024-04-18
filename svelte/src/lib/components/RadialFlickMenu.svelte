@@ -65,6 +65,8 @@
         {getArc(size / 2, size / 2, size / 2 - itemThickness, 0, -itemPercent * 360, 0)}
         Z
       "
+        role="menuitem"
+        tabindex="0"
       />
       <text font-size="2" fill="black">
         <textPath href={`#rmi-${i}`} text-anchor="middle" method="align">
