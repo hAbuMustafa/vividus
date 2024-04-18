@@ -10,6 +10,8 @@
 
   const itemPercent = 1 / options.length;
 
+  const menuId = crypto.randomUUID();
+
   function polarToCartesian(
     centerX: number,
     centerY: number,
@@ -46,14 +48,28 @@
   xmlns="http://www.w3.org/2000/svg"
   style="overflow: visible"
 >
+  <circle
+    cx={menuCenter}
+    cy={menuCenter}
+    r={menuRadius - itemThickness - 1}
+    class="radial-menu-item"
+    fill="red"
+    id="radia-menu-{menuId}-dismiss"
+    role="menuitem"
+    tabindex="0"
+  />
+  <text fill="white" font-size="2em">
+    <textPath href="#radia-menu-{menuId}-dismiss" text-anchor="middle" method="align">
+      X
+    </textPath>
+  </text>
   {#each options as item, i (i)}
-    <g>
+    <g class="radial-menu-item">
       <path
-        class="radial-menu-item"
-        style="rotate: {i * itemPercent * 360}deg;"
+        style="rotate: {i * itemPercent * 360}deg; transform-origin: 50% 50%;"
         stroke={showBorder ? borderColor : null}
         fill="green"
-        id={`rmi-${i}`}
+        id="radia-menu-item-{i}"
         role="menuitem"
         tabindex="0"
         d="
@@ -77,7 +93,7 @@
       "
       />
       <text font-size="2" fill="black">
-        <textPath href={`#rmi-${i}`} text-anchor="middle" method="align">
+        <textPath href="radia-menu-item-{i}" text-anchor="middle" method="align">
           {item.title}
         </textPath>
       </text>
@@ -100,13 +116,14 @@
 </svg>
 
 <style>
-  path {
+  .radial-menu-item {
     transform-origin: 50% 50%;
     transition: all 0.5s ease-in-out;
   }
 
-  path:hover,
-  path:focus {
+  .radial-menu-item:hover,
+  .radial-menu-item:focus {
     transform: scale(1.1);
+    z-index: 1;
   }
 </style>
