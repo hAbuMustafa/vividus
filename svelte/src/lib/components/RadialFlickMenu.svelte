@@ -3,9 +3,9 @@
 
   export let size = 120;
   export let itemThickness = 40;
-  export let showBorder = false; // todo: use thick border by default
-  export let borderColor = '#000000';
-  export let menuItemColor = 'green'; // xxx: use system accent color by default
+  export let showBorder = true;
+  export let borderColor = 'lightgray';
+  export let menuItemColor = 'gray';
   export let dismissButtonColor = 'red';
 
   const [menuRadius, menuCenter] = [size / 2, size / 2];
@@ -79,6 +79,7 @@
         style="rotate: {i * itemPercent * 360}deg; transform-origin: 50% 50%;"
         style:--menu-item-color={menuItemColor}
         stroke={showBorder ? borderColor : null}
+        stroke-width={showBorder ? '2px' : null}
         id="radia-menu-item-{i}"
         role="menuitem"
         tabindex="0"
