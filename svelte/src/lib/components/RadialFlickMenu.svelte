@@ -3,7 +3,7 @@
 
   export let size = 120;
   export let itemThickness = 40;
-  export let showBorder = true;
+  export let showBorder = false;
   export let borderColor = '#000000';
 
   const [menuRadius, menuCenter] = [size / 2, size / 2];
