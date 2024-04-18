@@ -54,15 +54,22 @@
         fill="green"
         id={`rmi-${i}`}
         d="
-        M {size / 2} 0
-        {getArc(size / 2, size / 2, size / 2, itemPercent * 360, 0)} 
+        M {menuCenter} 0
+        {getArc(menuCenter, menuCenter, menuRadius, itemPercent * 360, 0)} 
         {polarToCartesian(
-          size / 2,
-          size / 2,
-          size / 2 - itemThickness,
+          menuCenter,
+          menuCenter,
+          menuRadius - itemThickness,
           itemPercent * 360
         )}
-        {getArc(size / 2, size / 2, size / 2 - itemThickness, 0, -itemPercent * 360, 0)}
+        {getArc(
+          menuCenter,
+          menuCenter,
+          menuRadius - itemThickness,
+          0,
+          -itemPercent * 360,
+          0
+        )}
         Z
       "
         role="menuitem"
