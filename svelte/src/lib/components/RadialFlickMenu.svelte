@@ -6,6 +6,8 @@
   export let showBorder = true;
   export let borderColor = '#000000';
 
+  const [menuRadius, menuCenter] = [size / 2, size / 2];
+
   const itemPercent = 1 / options.length;
 
   function polarToCartesian(
@@ -14,12 +16,7 @@
     radius: number,
     angleInDegrees: number
   ) {
-    var angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
-
-    return {
-      x: centerX + radius * Math.cos(angleInRadians),
-      y: centerY + radius * Math.sin(angleInRadians),
-    };
+    return `L ${centerX + radius * Math.cos(((angleInDegrees - 90) * Math.PI) / 180.0)} ${centerY + radius * Math.sin(((angleInDegrees - 90) * Math.PI) / 180.0)}`;
   }
 
   function getArc(
@@ -27,30 +24,17 @@
     y: number,
     radius: number,
     startAngle: number,
-    endAngle: number
+    endAngle: number,
+    clockwise: 0 | 1 = 1,
+    largArc?: 0 | 1
   ) {
-    var start = polarToCartesian(x, y, radius, endAngle);
-    var end = polarToCartesian(x, y, radius, startAngle);
+    const largeArcFlag = largArc ?? endAngle - startAngle <= 180 ? '0' : '1';
 
-    var largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+    const arc = `A ${radius} ${radius} 0 ${largeArcFlag} ${clockwise} ${x + radius * Math.cos(((startAngle - 90) * Math.PI) / 180.0)} ${y + radius * Math.sin(((startAngle - 90) * Math.PI) / 180.0)}`;
 
-    var d = [
-      'M',
-      start.x,
-      start.y,
-      'A',
-      radius,
-      radius,
-      0,
-      largeArcFlag,
-      0,
-      end.x,
-      end.y,
-    ].join(' ');
+    console.log(arc);
 
-    const p = `A ${radius} ${radius} 0 0 0 ${end.x} ${end.y}`;
-
-    return p;
+    return arc;
   }
 </script>
 
@@ -65,16 +49,20 @@
   {#each options as item, i (i)}
     <g>
       <path
-        style="transform-origin: 0 100%; color: black;"
+        style="transform-origin: 0 100%;"
         stroke={showBorder ? borderColor : null}
         fill="green"
         id={`rmi-${i}`}
         d="
         M {size / 2} 0
-        {getArc(size / 2, size / 2, size / 2, 0, 360 * itemPercent)}
-        l -{itemThickness} 0
-        M {size / 2} {itemThickness}
-        {getArc(size / 2, size / 2, size / 2 - itemThickness, 0, 360 * itemPercent)}
+        {getArc(size / 2, size / 2, size / 2, itemPercent * 360, 0)} 
+        {polarToCartesian(
+          size / 2,
+          size / 2,
+          size / 2 - itemThickness,
+          itemPercent * 360
+        )}
+        {getArc(size / 2, size / 2, size / 2 - itemThickness, 0, -itemPercent * 360, 0)}
         Z
       "
       />
@@ -89,57 +77,14 @@
     cx={size / 2}
     cy={size / 2}
     r={size / 2 - itemThickness}
-    stroke="yellow"
+    stroke="orange"
     stroke-dasharray="5 3 3 4"
   />
   <circle
     cx={size / 2}
     cy={size / 2}
     r={size / 2}
-    stroke="yellow"
+    stroke="orange"
     stroke-dasharray="5 3 3 4"
   />
 </svg>
-
-<!-- <script lang="ts">
-  export let options: any[] = [];
-
-  const itemLength = Math.floor(100 / options.length);
-</script>
-
-<div class="wrapper">
-  <svg width="50%" height="50%" viewBox="0 0 42 42" class="donut">
-    {#each options as item, index (index * 12)}
-      <circle
-        class="donut-segment"
-        cx="21"
-        cy="21"
-        r={100 / (2 * Math.PI)}
-        fill="none"
-        stroke={`#${index.toString(16)}${index.toString(16)}0000`}
-        stroke-width="10"
-        stroke-dasharray={`${itemLength} ${100 - itemLength}`}
-        stroke-dashoffset={25 -
-          itemLength * index -
-          ((100 - itemLength * options.length) / options.length) * index}
-      />
-    {/each}
-  </svg>
-</div>
-
-<style>
-  .wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;
-
-    & circle {
-      pointer-events: stroke;
-
-      &:hover {
-        stroke: rebeccapurple;
-      }
-    }
-  }
-</style> -->
