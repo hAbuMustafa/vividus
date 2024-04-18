@@ -32,7 +32,7 @@
 
     const arc = `A ${radius} ${radius} 0 ${largeArcFlag} ${clockwise} ${x + radius * Math.cos(((startAngle - 90) * Math.PI) / 180.0)} ${y + radius * Math.sin(((startAngle - 90) * Math.PI) / 180.0)}`;
 
-    console.log(arc);
+    // console.log(arc);
 
     return arc;
   }
@@ -83,7 +83,7 @@
       </text>
     </g>
   {/each}
-  <circle
+  <!-- <circle
     cx={size / 2}
     cy={size / 2}
     r={size / 2 - itemThickness}
@@ -96,7 +96,7 @@
     r={size / 2}
     stroke="orange"
     stroke-dasharray="5 3 3 4"
-  />
+  /> -->
 </svg>
 
 <style>
