@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let options: any[] = [];
+  export let options: any[] = []; // todo: add type to force adding action and title
 
   export let size = 120;
   export let itemThickness = 40;
@@ -40,8 +40,6 @@
 
     return arc;
   }
-
-  // todo: add interaction to dismiss menu and fire action for every button (mouseup)
 </script>
 
 <svg
@@ -83,6 +81,14 @@
         id="radia-menu-item-{i}"
         role="menuitem"
         tabindex="0"
+        on:mouseup={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (item.action) {
+            item.action();
+          }
+          // todo: dismiss menu
+        }}
         d="
         M {menuCenter} 0
         {getArc(menuCenter, menuCenter, menuRadius, itemPercent * 360, 0)} 

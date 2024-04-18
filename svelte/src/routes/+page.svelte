@@ -19,7 +19,16 @@ doloribus consectetur perferendis sit rem, quasi omnis tenetur, maxime suscipit 
 minima nesciunt! Distinctio molestiae nostrum nulla totam deserunt animi perferendis
 doloremque facere id laudantium. Earum, aspernatur enim? Dolore illum dolor, repellat
 architecto <RadialFlickMenu
-  options={[{ title: 'home' }, { title: 'about' }, { title: 'login' }]}
+  options={[
+    {
+      title: 'home',
+      action: () => {
+        alert('home');
+      },
+    },
+    { title: 'about' },
+    { title: 'login' },
+  ]}
 />
 veniam, velit quis blanditiis facere ipsum similique enim libero eveniet nemo labore? Delectus
 vel quos dolore asperiores sed magni dolores quidem earum ipsa consectetur velit adipisci eveniet
