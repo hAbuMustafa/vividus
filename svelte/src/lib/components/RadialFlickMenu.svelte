@@ -3,8 +3,10 @@
 
   export let size = 120;
   export let itemThickness = 40;
-  export let showBorder = false;
+  export let showBorder = false; // todo: use thick border by default
   export let borderColor = '#000000';
+  export let menuItemColor = 'green'; // xxx: use system accent color by default
+  export let dismissButtonColor = 'red';
 
   const [menuRadius, menuCenter] = [size / 2, size / 2];
 
@@ -38,6 +40,8 @@
 
     return arc;
   }
+
+  // todo: add interaction to dismiss menu and fire action for every button (mouseup)
 </script>
 
 <svg
@@ -45,6 +49,8 @@
   height={size}
   viewBox="0 0 {size} {size}"
   fill="none"
+  style:--dismiss-button-color={dismissButtonColor}
+  style:--menu-item-color={menuItemColor}
   xmlns="http://www.w3.org/2000/svg"
   style="overflow: visible"
 >
@@ -53,22 +59,26 @@
     cy={menuCenter}
     r={menuRadius - itemThickness - 1}
     class="radial-menu-item"
-    fill="red"
-    id="radia-menu-{menuId}-dismiss"
+    style:--dismiss-button-color={dismissButtonColor}
+    id="radial-menu-{menuId}-dismiss"
     role="menuitem"
     tabindex="0"
   />
-  <text fill="white" font-size="2em">
-    <textPath href="#radia-menu-{menuId}-dismiss" text-anchor="middle" method="align">
+  <!-- <text fill="white" font-size="2em">
+    <textPath href="#radial-menu-{menuId}-dismiss" text-anchor="middle" method="align">
       X
     </textPath>
+  </text> -->
+  <text x="50%" y="50%" text-anchor="middle" stroke="white" dy=".4em" font-family="Arial">
+    X
   </text>
   {#each options as item, i (i)}
-    <g class="radial-menu-item">
+    <g>
       <path
+        class="radial-menu-item"
         style="rotate: {i * itemPercent * 360}deg; transform-origin: 50% 50%;"
+        style:--menu-item-color={menuItemColor}
         stroke={showBorder ? borderColor : null}
-        fill="green"
         id="radia-menu-item-{i}"
         role="menuitem"
         tabindex="0"
@@ -92,10 +102,18 @@
         Z
       "
       />
-      <text font-size="2" fill="black">
-        <textPath href="radia-menu-item-{i}" text-anchor="middle" method="align">
-          {item.title}
-        </textPath>
+      <!-- todo: fix text position -->
+      <text
+        x={menuCenter +
+          (menuRadius - itemThickness / 2) *
+            Math.cos((((i * itemPercent * 360) / 2 - 90) * Math.PI) / 180.0)}
+        y={menuCenter +
+          (menuRadius - itemThickness / 2) *
+            Math.sin((((i * itemPercent * 360) / 2 - 90) * Math.PI) / 180.0)}
+        font-size="1em"
+        fill="black"
+      >
+        {item.title}
       </text>
     </g>
   {/each}
@@ -117,13 +135,26 @@
 
 <style>
   .radial-menu-item {
-    transform-origin: 50% 50%;
-    transition: all 0.5s ease-in-out;
+    transform-origin: var(--transform-origin, 50% 50%);
+    transition: var(--highlight-transition, all 0.5s ease-in-out);
+    fill: var(--menu-item-color);
+  }
+
+  .radial-menu-item[id*='-dismiss'] {
+    fill: var(--dismiss-button-color);
   }
 
   .radial-menu-item:hover,
   .radial-menu-item:focus {
-    transform: scale(1.1);
-    z-index: 1;
+    transform: var(--highlight-transform);
+  }
+
+  .radial-menu-item:hover,
+  .radial-menu-item:focus {
+    fill: var(--highlight-fill, lightgray);
+  }
+
+  text {
+    pointer-events: none;
   }
 </style>
