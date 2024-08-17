@@ -1,4 +1,4 @@
-# Guide to addin new components to the liberary
+# Guide to adding new components to the library
 
 0. Create the component inside `./src/lib/components`.
 1. Import and re-export the component inside `./src/lib/index.ts`.
