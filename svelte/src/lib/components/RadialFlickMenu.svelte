@@ -1,5 +1,10 @@
 <script lang="ts">
-  export let options: any[] = []; // todo: add type to force adding action and title
+  interface MenuItem extends Record<string, any> {
+    title: string;
+    action: () => void;
+  }
+
+  export let options: MenuItem[] = [];
 
   export let size = 120;
   export let itemThickness = 40;

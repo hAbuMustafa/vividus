@@ -9,6 +9,7 @@
   <li>
     <Sparkles>Whimsical</Sparkles>
   </li>
+
   <li>
     <RadialFlickMenu
       options={[
@@ -18,8 +19,14 @@
             alert('home');
           },
         },
-        { title: 'about' },
-        { title: 'login' },
+        { title: 'about', action: () => console.log('about') },
+        { title: 'login', action: () => alert('login') },
+        {
+          action: () => {
+            console.log('hi');
+          },
+          title: 'hi',
+        },
       ]}
     />
   </li>
