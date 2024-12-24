@@ -5,12 +5,12 @@
 </script>
 
 <h2>Components</h2>
-<ul>
-  <li>
+<div class="component-list">
+  <div class="component-item">
     <Sparkles>Whimsical</Sparkles>
-  </li>
+  </div>
 
-  <li>
+  <div class="component-item">
     <RadialFlickMenu
       options={[
         {
@@ -29,9 +29,29 @@
         },
       ]}
     />
-  </li>
+  </div>
 
-  <li>
+  <div class="component-item">
     <Abbr title="[m]essenger [R]ibo-[N]ucleic [A]cid" styles="color:red;" />
-  </li>
-</ul>
+  </div>
+</div>
+
+<style>
+  h2 {
+    text-align: center;
+  }
+  .component-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .component-item {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+  }
+</style>
