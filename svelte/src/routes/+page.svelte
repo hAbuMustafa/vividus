@@ -1,6 +1,7 @@
 <script>
   import Abbr from '$lib/components/Abbr.svelte';
   import RadialFlickMenu from '$lib/components/RadialFlickMenu.svelte';
+  import Sparkles from '$lib/components/Sparkles.svelte';
 </script>
 
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint magni, excepturi corrupti
@@ -13,12 +14,13 @@ accusantium, soluta repellendus corrupti provident quisquam ullam praesentium ma
 maiores deserunt cum dolorum blanditiis adipisci, laborum amet molestiae. Id labore quod
 officia necessitatibus at quisquam voluptate inventore optio tempore a. Velit aspernatur
 perferendis tenetur laboriosam ratione doloremque quisquam eos rerum suscipit minima
-voluptatum reiciendis illo, libero voluptatem placeat nam est eaque id quidem dolorem
-possimus. Et rem earum libero a ea eaque officia numquam eum perferendis! Voluptatem
-doloribus consectetur perferendis sit rem, quasi omnis tenetur, maxime suscipit maiores
-minima nesciunt! Distinctio molestiae nostrum nulla totam deserunt animi perferendis
-doloremque facere id laudantium. Earum, aspernatur enim? Dolore illum dolor, repellat
-architecto <RadialFlickMenu
+voluptatum reiciendis illo, libero voluptatem placeat nam est eaque id quidem dolorem <Sparkles
+  >Whimsical</Sparkles
+>
+possimus. Et rem earum libero a ea eaque officia numquam eum perferendis! Voluptatem doloribus
+consectetur perferendis sit rem, quasi omnis tenetur, maxime suscipit maiores minima nesciunt!
+Distinctio molestiae nostrum nulla totam deserunt animi perferendis doloremque facere id laudantium.
+Earum, aspernatur enim? Dolore illum dolor, repellat architecto <RadialFlickMenu
   options={[
     {
       title: 'home',
