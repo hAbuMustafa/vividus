@@ -1,4 +1,4 @@
-<!-- This component is totally a recreation of Josh W. Comeau's Sparkle component (found at https://www.joshwcomeau.com/react/animated-sparkles-in-react/#generating-sparkles-3) for a Svelte Version -->
+<!-- This component is totally a recreation of Josh W. Comeau's Sparkle component (found at https://www.joshwcomeau.com/react/animated-sparkles-in-react/) for a Svelte Version -->
 
 <script lang="ts">
   import { prefersReducedMotion } from '$lib/utils/a11y-helpers.js';
