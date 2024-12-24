@@ -30,9 +30,9 @@
     startAngle: number,
     endAngle: number,
     clockwise: 0 | 1 = 1,
-    largArc?: 0 | 1
+    largeArc?: 0 | 1
   ) {
-    const largeArcFlag = largArc ?? endAngle - startAngle <= 180 ? '0' : '1';
+    const largeArcFlag = (largeArc ?? endAngle - startAngle <= 180) ? '0' : '1';
 
     const arc = `A ${radius} ${radius} 0 ${largeArcFlag} ${clockwise} ${x + radius * Math.cos(((startAngle - 90) * Math.PI) / 180.0)} ${y + radius * Math.sin(((startAngle - 90) * Math.PI) / 180.0)}`;
 
@@ -109,7 +109,7 @@
         Z
       "
       />
-      <!-- todo: fix text position -->
+      <!-- fix: text position -->
       <text
         x={menuCenter +
           (menuRadius - itemThickness / 2) *
