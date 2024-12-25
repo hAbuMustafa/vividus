@@ -16,6 +16,8 @@ export function generateSparkle(sparkleColor = DEFAULT_COLOR) {
     createdAt: Date.now(),
     color: sparkleColor,
     size: random(10, 20),
-    style: `top: ${random(0, 100) + '%'}; left: ${random(0, 100) + '%'};`,
+    style: `top: ${random(-20, 50) + '%'}; left: ${
+      random(0, 90) + '%'
+    }; pointer-events: none;`,
   } satisfies SparkleT;
 }
