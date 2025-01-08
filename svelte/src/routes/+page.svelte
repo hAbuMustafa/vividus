@@ -36,8 +36,9 @@
     <Abbr title="[m]essenger [R]ibo-[N]ucleic [A]cid" styles="color:red;" />
   </div>
 
-  <div class="component-item">
-    <Ayah number="2:280-282" />
+  <div class="component-item" dir="rtl">
+    قال الله تعالى:
+    <Ayah number="2:280-282" /> صدق الله العظيم
   </div>
 </div>
 

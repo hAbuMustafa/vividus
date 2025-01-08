@@ -660,7 +660,7 @@
   }
 
   .quote-wrapper {
-    display: inline-block;
+    display: inline;
     direction: rtl;
     font-family: 'Amiri Quran';
     line-height: 2;
