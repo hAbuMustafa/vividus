@@ -37,8 +37,7 @@
   </div>
 
   <div class="component-item" dir="rtl">
-    قال الله تعالى:
-    <Ayah number="2:280-282" showLink={true} /> صدق الله العظيم
+    <Ayah number="2:280-282" showLink={true} />
   </div>
 </div>
 
@@ -56,9 +55,16 @@
 
   .component-item {
     padding: 1rem;
+    width: 55%;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
+
+    display: grid;
+  }
+
+  .component-item > :global(*) {
+    place-self: center;
   }
 </style>
