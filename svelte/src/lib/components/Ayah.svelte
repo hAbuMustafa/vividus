@@ -576,6 +576,7 @@
   export let styles: string | undefined = undefined;
   export let showNumbers: boolean = true;
   export let showReference: boolean = true;
+  export let showLink: boolean = true;
 
   async function fetchAyahRange(num: string) {
     if (!num) return;
@@ -633,8 +634,16 @@
     </div>
     {#if showReference}
       <span class="ayah-ref"
-        >[{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
-          : {number.split(':')[1].replace('-', ' - ')}{/if}]</span
+        >[{#if showLink}
+          <a
+            href="https://quran.ksu.edu.sa/index.php?l=en#aya={number
+              .split('-')[0]
+              .replace(':', '_')}&m=hafs&qaree=husary&trans=en_sh"
+            target="_blank"
+            >{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
+              : {number.split(':')[1].replace('-', ' - ')}{/if}</a
+          >{:else}{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
+            : {number.split(':')[1].replace('-', ' - ')}{/if}{/if}]</span
       >
     {/if}
   </div>
@@ -692,5 +701,14 @@
     color: red;
 
     user-select: none;
+  }
+
+  .ayah-ref > a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ayah-ref > a:hover {
+    text-decoration: underline;
   }
 </style>
