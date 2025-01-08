@@ -38,7 +38,7 @@
 
   <div class="component-item" dir="rtl">
     قال الله تعالى:
-    <Ayah number="2:280-282" /> صدق الله العظيم
+    <Ayah number="2:280-282" showLink={true} /> صدق الله العظيم
   </div>
 </div>
 
