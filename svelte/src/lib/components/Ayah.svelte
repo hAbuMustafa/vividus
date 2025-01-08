@@ -576,7 +576,7 @@
   export let styles: string | undefined = undefined;
   export let showNumbers: boolean = true;
   export let showReference: boolean = true;
-  export let showLink: boolean = true;
+  export let showLink: boolean = false;
 
   async function fetchAyahRange(num: string) {
     if (!num) return;
@@ -621,7 +621,7 @@
   <div class="quote-wrapper" style={styles}>
     <div class="ayat-wrapper">
       {#if ayas}
-        {#each ayas as ayah, i (ayah.id)}
+        {#each ayas as ayah (ayah.id)}
           <span class="ayah"
             ><span class="ayah-text">{ayah.text}</span>
             <span class="ayah-indicator"
