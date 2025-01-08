@@ -5,7 +5,12 @@
   import Sparkles from '$lib/components/Sparkles.svelte';
 </script>
 
-<h2>Components</h2>
+<h2>
+  <Sparkles>
+    Components Of VIVIDUS <img src="/logo-simple.png" alt="vividus logo" width="32" />
+  </Sparkles>
+</h2>
+
 <div class="component-list">
   <div class="component-item">
     <Sparkles>Whimsical</Sparkles>
@@ -44,6 +49,10 @@
 <style>
   h2 {
     text-align: center;
+    background-color: lightgray;
+    border-radius: 8px;
+    width: 80%;
+    margin-inline: auto;
   }
 
   .component-list {
