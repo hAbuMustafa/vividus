@@ -666,6 +666,8 @@
 
   .ayat-wrapper {
     display: inline;
+    font-family: 'Amiri Quran';
+    line-height: 2;
   }
 
   .ayat-wrapper > .ayah:first-of-type::before {
@@ -674,11 +676,6 @@
 
   .ayat-wrapper > .ayah:last-of-type::after {
     content: '﴾';
-  }
-
-  .ayah {
-    font-family: 'Amiri Quran';
-    line-height: 2;
   }
 
   .ayah-indicator {
