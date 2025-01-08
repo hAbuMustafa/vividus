@@ -1,5 +1,6 @@
 <script>
   import Abbr from '$lib/components/Abbr.svelte';
+  import Ayah from '$lib/components/Ayah.svelte';
   import RadialFlickMenu from '$lib/components/RadialFlickMenu.svelte';
   import Sparkles from '$lib/components/Sparkles.svelte';
 </script>
@@ -34,12 +35,17 @@
   <div class="component-item">
     <Abbr title="[m]essenger [R]ibo-[N]ucleic [A]cid" styles="color:red;" />
   </div>
+
+  <div class="component-item">
+    <Ayah number="2:280-282" />
+  </div>
 </div>
 
 <style>
   h2 {
     text-align: center;
   }
+
   .component-list {
     display: flex;
     flex-direction: column;
