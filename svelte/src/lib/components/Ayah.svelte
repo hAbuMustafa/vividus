@@ -572,11 +572,21 @@
     },
   ];
 
-  export let number: string;
-  export let styles: string | undefined = undefined;
-  export let showNumbers: boolean = true;
-  export let showReference: boolean = true;
-  export let showLink: boolean = false;
+  interface Props {
+    number: string;
+    styles?: string | undefined;
+    showNumbers?: boolean;
+    showReference?: boolean;
+    showLink?: boolean;
+  }
+
+  let {
+    number,
+    styles = undefined,
+    showNumbers = true,
+    showReference = true,
+    showLink = false
+  }: Props = $props();
 
   async function fetchAyahRange(num: string) {
     if (!num) return;

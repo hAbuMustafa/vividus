@@ -1,5 +1,11 @@
 <script lang="ts">
-  export let color, size, style;
+  interface Props {
+    color: any;
+    size: any;
+    style: any;
+  }
+
+  let { color, size, style }: Props = $props();
 </script>
 
 <span {style}>

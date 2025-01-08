@@ -6,11 +6,16 @@
   import { DEFAULT_COLOR, generateSparkle } from '$lib/utils/sparkles-helpers.js';
   import Sparkle from './Sparkle.svelte';
 
-  export let color = DEFAULT_COLOR;
+  interface Props {
+    color?: any;
+    children?: import('svelte').Snippet;
+  }
+
+  let { color = DEFAULT_COLOR, children }: Props = $props();
 
   const userPrefersReducedMotion = prefersReducedMotion();
 
-  let sparkles = [...range(4).map(() => generateSparkle(color))];
+  let sparkles = $state([...range(4).map(() => generateSparkle(color))]);
 
   randomInterval(
     () => {
@@ -36,7 +41,7 @@
     <Sparkle color={sparkle.color} size={sparkle.size} style={sparkle.style} />
   {/each}
   <strong>
-    <slot />
+    {@render children?.()}
   </strong>
 </span>
 

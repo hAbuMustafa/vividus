@@ -4,14 +4,26 @@
     action: () => void;
   }
 
-  export let options: MenuItem[] = [];
 
-  export let size = 120;
-  export let itemThickness = 40;
-  export let showBorder = true;
-  export let borderColor = 'lightgray';
-  export let menuItemColor = 'gray';
-  export let dismissButtonColor = 'red';
+  interface Props {
+    options?: MenuItem[];
+    size?: number;
+    itemThickness?: number;
+    showBorder?: boolean;
+    borderColor?: string;
+    menuItemColor?: string;
+    dismissButtonColor?: string;
+  }
+
+  let {
+    options = [],
+    size = 120,
+    itemThickness = 40,
+    showBorder = true,
+    borderColor = 'lightgray',
+    menuItemColor = 'gray',
+    dismissButtonColor = 'red'
+  }: Props = $props();
 
   const [menuRadius, menuCenter] = [size / 2, size / 2];
 
@@ -86,7 +98,7 @@
         id="radia-menu-item-{i}"
         role="menuitem"
         tabindex="0"
-        on:mouseup={(e) => {
+        onmouseup={(e) => {
           e.preventDefault();
           e.stopPropagation();
           if (item.action) {

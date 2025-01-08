@@ -1,10 +1,21 @@
 <script lang="ts">
-  export let title: string;
-  export let styles = '';
-  export let partStyles = '';
-  export let segmentStyles = '';
-  export let useTitle = true;
-  export let useTransition = true;
+  interface Props {
+    title: string;
+    styles?: string;
+    partStyles?: string;
+    segmentStyles?: string;
+    useTitle?: boolean;
+    useTransition?: boolean;
+  }
+
+  let {
+    title,
+    styles = '',
+    partStyles = '',
+    segmentStyles = '',
+    useTitle = true,
+    useTransition = true
+  }: Props = $props();
 
   const cleanTitle = title.replace(/[\[\]]/g, '');
   const shift = title.charAt(0) !== '[';

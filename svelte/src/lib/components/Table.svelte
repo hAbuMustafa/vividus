@@ -49,7 +49,11 @@
     return dataItem.hasOwnProperty('content') && typeof dataItem !== 'string';
   }
 
-  export let data: TableData;
+  interface Props {
+    data: TableData;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <table>
