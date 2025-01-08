@@ -662,12 +662,12 @@
   .quote-wrapper {
     display: inline-block;
     direction: rtl;
+    font-family: 'Amiri Quran';
+    line-height: 2;
   }
 
   .ayat-wrapper {
     display: inline;
-    font-family: 'Amiri Quran';
-    line-height: 2;
   }
 
   .ayat-wrapper > .ayah:first-of-type::before {
