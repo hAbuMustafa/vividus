@@ -629,8 +629,7 @@
               {/if}</span
             >
           </span>
-        {/each}
-      {/if}
+        {/each}{/if}
     </div>
     {#if showReference}
       <span class="ayah-ref"
