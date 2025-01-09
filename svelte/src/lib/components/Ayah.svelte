@@ -1,6 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  // todo: add Basmalah block and Surah name block if multiple Surahs displayed (don't forget to omit Basmalah for Attawbah)
+  // fix: Surah ref to display all ranges
+  // todo: add slot display to allow partial Ayah display
+
   const surahs = [
     {
       name: 'الفاتحة',
