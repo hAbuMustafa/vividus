@@ -11,11 +11,11 @@ declare global {
   namespace Quran {
     interface Ayah {
       id: number;
-      number: number;
+      number?: number;
       text: string;
-      translations: Translations;
+      translations?: Translations;
       transliteration: string;
-      chapter: Chapter;
+      chapter?: Chapter;
     }
 
     interface Chapter {
