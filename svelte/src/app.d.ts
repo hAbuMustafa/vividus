@@ -15,7 +15,7 @@ declare global {
       text: string;
       translations?: Translations;
       transliteration: string;
-      chapter?: Chapter;
+      chapter?: Chapter | number;
     }
 
     interface Chapter {
