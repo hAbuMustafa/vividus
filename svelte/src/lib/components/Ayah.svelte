@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   const surahs = [
     {
       name: 'الفاتحة',
@@ -585,79 +587,103 @@
     styles = undefined,
     showNumbers = true,
     showReference = true,
-    showLink = false
+    showLink = false,
   }: Props = $props();
+
+  let ayat: Quran.Ayah[] = $state([]);
+  const OnlySurahRegex = /^\d{1,3}$/;
+  const SingleAyahRegex = /^\d{1,3}:\d{1,3}$/;
+  const AyahRangeRegex = /^\d{1,3}:\d{1,3}-\d{1,3}$/;
+  const MultipleSurahRegex = /^\d{1,3}-\d{1,3}$/;
+  const MultipleAyahRegex = /^\d{1,3}:\d{1,3}-\d{1,3}:\d{1,3}$/;
+
+  async function getAyatFromSurah(surahNum: number) {
+    const response = await fetch(
+      `https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/${surahNum}.json`
+    );
+    const data = await response.json();
+    const ayat = data.verses.map((v: Quran.Ayah) => ({ ...v, chapter: surahNum }));
+    return ayat as Quran.Ayah[];
+  }
 
   async function fetchAyahRange(num: string) {
     if (!num) return;
-    const [chapter, ayahRange] = num.split(':');
-    const [start, end] = ayahRange.split('-').map(Number);
 
-    if (!chapter || !ayahRange) {
-      console.error(
-        'Invalid format of Ayah Range. Expected format: SurahNumber:fromAyahNumber[-toAyahNumber]. Example:  1:2-4 (Surah 1, Ayah 2-4)'
-      );
-      return;
-    }
-    if (start > end) {
-      console.error('Start Ayah number cannot be greater than end Ayah number.');
-      return;
-    }
-    if (start > surahs[Number(chapter) - 1].count) {
-      console.error(
-        'Start Ayah number cannot be greater than the total number of Ayahs in the chapter (Surah).'
-      );
-      return;
-    }
-    if (end > surahs[Number(chapter) - 1].count) {
-      console.error(
-        'End Ayah number cannot be greater than the total number of Ayahs in the chapter (Surah).'
-      );
-      return;
-    }
+    if (OnlySurahRegex.test(num)) {
+      const surahNum = Number(num);
+      ayat = await getAyatFromSurah(surahNum);
+    } else if (MultipleSurahRegex.test(num)) {
+      let [startSurah, endSurah] = num.split('-').map(Number);
+      if (startSurah > endSurah) [startSurah, endSurah] = [endSurah, startSurah];
 
-    const res = await fetch(
-      `https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/${chapter}.json`
-    );
-    const data: Quran.Chapter = await res.json();
-
-    return [...data.verses!.slice(start - 1, end ?? start)] satisfies Quran.Ayah[];
+      for (let surahN = startSurah; surahN <= endSurah; surahN++) {
+        const surahAyat = await getAyatFromSurah(surahN);
+        ayat.push(...surahAyat);
+      }
+    } else if (MultipleAyahRegex.test(num)) {
+      let [startSurah, startAyah, endSurah, endAyah] = num
+        .split(':')
+        .flatMap((num) => num.split('-').map(Number));
+      if (startSurah > endSurah) {
+        [startSurah, endSurah] = [endSurah, startSurah];
+        [startAyah, endAyah] = [endAyah, startAyah];
+      }
+      for (let surahN = startSurah; surahN <= endSurah; surahN++) {
+        const surahAyat = await getAyatFromSurah(surahN);
+        if (surahN === startSurah) {
+          ayat.push(...surahAyat.slice(startAyah - 1, surahAyat.length));
+        } else if (surahN === endSurah) {
+          ayat.push(...surahAyat.slice(0, endAyah));
+        } else {
+          ayat.push(...surahAyat);
+        }
+      }
+    } else if (SingleAyahRegex.test(num)) {
+      const [surah, ayah] = num.split(':').map(Number);
+      const surahAyat = await getAyatFromSurah(surah);
+      ayat = [surahAyat[ayah - 1]];
+    } else if (AyahRangeRegex.test(num)) {
+      const [surah, ayahRange] = num.split(':');
+      const [start, end] = ayahRange.split('-').map(Number);
+      const surahAyat = await getAyatFromSurah(Number(surah));
+      ayat = surahAyat.slice(start - 1, end);
+    }
   }
+
+  onMount(async () => {
+    await fetchAyahRange(number);
+  });
 </script>
 
-{#await fetchAyahRange(number)}
-  <span class="loading">[جار طلب نص الأيِ من المصدر...]</span>
-{:then ayas}
-  <div class="quote-wrapper" style={styles}>
-    <div class="ayat-wrapper">
-      {#if ayas}
-        {#each ayas as ayah (ayah.id)}
-          <span class="ayah"
-            ><span class="ayah-text">{ayah.text}</span>
-            <span class="ayah-indicator"
-              >&#x06DD;{#if showNumbers}
-                <span class="ayah-number">{ayah.id}</span>
-              {/if}</span
-            >
-          </span>
-        {/each}{/if}
-    </div>
-    {#if showReference}
-      <span class="ayah-ref"
-        >[{#if showLink}
-          <a
-            href="https://quran.ksu.edu.sa/index.php?l=en#aya={number
-              .split('-')[0]
-              .replace(':', '_')}&m=hafs&qaree=husary&trans=en_sh"
-            target="_blank"
-            >{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
-              : {number.split(':')[1].replace('-', ' - ')}{/if}</a
-          >{:else}{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
-            : {number.split(':')[1].replace('-', ' - ')}{/if}{/if}]</span
-      >
-    {/if}
+<div class="quote-wrapper" style={styles}>
+  <div class="ayat-wrapper">
+    {#if ayat.length}
+      {#each ayat as ayah (`${ayah.chapter}-${ayah.id}`)}
+        <span class="ayah"
+          ><span class="ayah-text">{ayah.text}</span>
+          <span class="ayah-indicator"
+            >&#x06DD;{#if showNumbers}
+              <span class="ayah-number">{ayah.id}</span>
+            {/if}</span
+          >
+        </span>
+      {/each}{/if}
   </div>
-{/await}
+  {#if showReference}
+    <span class="ayah-ref"
+      >[{#if showLink}
+        <a
+          href="https://quran.ksu.edu.sa/index.php?l=en#aya={number
+            .split('-')[0]
+            .replace(':', '_')}&m=hafs&qaree=husary&trans=en_sh"
+          target="_blank"
+          >{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
+            : {number.split(':')[1].replace('-', ' - ')}{/if}</a
+        >{:else}{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
+          : {number.split(':')[1].replace('-', ' - ')}{/if}{/if}]</span
+    >
+  {/if}
+</div>
 
 <style>
   @font-face {

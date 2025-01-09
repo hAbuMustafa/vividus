@@ -42,7 +42,7 @@
   </div>
 
   <div class="component-item" dir="rtl">
-    <Ayah number="2:280-282" showLink={true} />
+    <Ayah number="112:2-114:2" showLink={true} />
   </div>
 </div>
 
