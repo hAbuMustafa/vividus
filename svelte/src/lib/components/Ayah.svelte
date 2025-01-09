@@ -713,6 +713,10 @@
     display: inline;
     direction: rtl;
     font-family: 'Amiri Quran';
+    font-feature-settings:
+      'ss01' 1,
+      'ss02' 1,
+      'ss03' 1;
     line-height: 2;
   }
 
