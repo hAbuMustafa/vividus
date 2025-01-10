@@ -726,10 +726,26 @@
       U+1EEF0-1EEF1;
   }
 
+  @font-face {
+    font-family: 'KFGQPC HAFS Uthmanic Script Regular';
+    src: url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.eot');
+    src:
+      url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.eot?#iefix')
+        format('embedded-opentype'),
+      url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.woff2')
+        format('woff2'),
+      url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.svg#KFGQPC HAFS Uthmanic Script Regular')
+        format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   .quote-wrapper {
     display: inline;
     direction: rtl;
-    font-family: 'Amiri Quran';
+    font-family: 'KFGQPC HAFS Uthmanic Script Regular', 'Amiri Quran', Arial, Helvetica,
+      sans-serif;
     font-feature-settings:
       'ss01' 1,
       'ss02' 1,
