@@ -728,14 +728,15 @@
 
   @font-face {
     font-family: 'KFGQPC HAFS Uthmanic Script Regular';
-    src: url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.eot');
     src:
-      url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.eot?#iefix')
-        format('embedded-opentype'),
       url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.woff2')
         format('woff2'),
-      url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.svg#KFGQPC HAFS Uthmanic Script Regular')
-        format('svg');
+      url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.woff')
+        format('woff'),
+      url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.ttf')
+        format('truetype'),
+      url('https://db.onlinewebfonts.com/t/468122624d514e5acbeeb79e4e9f3d88.eot?#iefix')
+        format('embedded-opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
