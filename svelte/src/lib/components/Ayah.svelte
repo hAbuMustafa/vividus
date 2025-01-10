@@ -660,20 +660,37 @@
   });
 </script>
 
+{#snippet Ayah(ayah: Quran.Ayah)}
+  <span class="ayah"
+    ><span class="ayah-text">{ayah.text}</span>
+    <span class="ayah-indicator"
+      >&#x06DD;{#if showNumbers}
+        <span class="ayah-number">{ayah.id}</span>
+      {/if}</span
+    >
+  </span>
+{/snippet}
+
 <div class="quote-wrapper" style={styles}>
-  <div class="ayat-wrapper">
-    {#if ayat.length}
-      {#each ayat as ayah (`${ayah.chapter}-${ayah.id}`)}
-        <span class="ayah"
-          ><span class="ayah-text">{ayah.text}</span>
-          <span class="ayah-indicator"
-            >&#x06DD;{#if showNumbers}
-              <span class="ayah-number">{ayah.id}</span>
-            {/if}</span
-          >
-        </span>
-      {/each}{/if}
-  </div>
+  {#if ayat.length}
+    {#if MultipleAyahRegex.test(number) || MultipleSurahRegex.test(number)}
+      {#each ayat as ayah, i (`${ayah.chapter}-${ayah.id}`)}
+        <div class="ayat-wrapper">
+          {#if i === 0 || ayah.chapter !== ayat[i - 1]?.chapter}
+            <div class="surah-name">سورة {surahs[(ayah.chapter as number) - 1].name}</div>
+            <div class="basmalah">&#xFDFD;</div>
+          {/if}
+          {@render Ayah(ayah)}
+        </div>
+      {/each}
+    {:else}
+      <div class="ayat-wrapper">
+        {#each ayat as ayah (ayah.id)}
+          {@render Ayah(ayah)}
+        {/each}
+      </div>
+    {/if}
+  {/if}
   {#if showReference}
     <span class="ayah-ref"
       >[{#if showLink}
