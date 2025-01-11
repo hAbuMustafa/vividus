@@ -672,7 +672,11 @@
 {/snippet}
 
 {#snippet ChapterNameAndBasmalah(AyahList: Quran.Ayah[])}
-  <div class="surah-name">سورة {surahs[Number(AyahList[0].chapter) - 1].name}</div>
+  <div class="surah-name">
+    {#if AyahList[0].id > 1}
+      من {' '}
+    {/if}سورة {surahs[Number(AyahList[0].chapter) - 1].name}
+  </div>
   {#if AyahList[0].id === 1 && Number(AyahList[0].chapter) !== 9}
     <div class="basmalah">&#xFDFD;</div>
   {/if}
