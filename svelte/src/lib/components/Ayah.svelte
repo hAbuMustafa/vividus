@@ -660,14 +660,14 @@
   });
 </script>
 
-{#snippet Ayah(ayah: Quran.Ayah)}
+{#snippet Ayah(ayah: Quran.Ayah, isLast: boolean)}
   <span class="ayah"
     ><span class="ayah-text">{ayah.text}</span>
     <span class="ayah-indicator"
       >&#x06DD;{#if showNumbers}
         <span class="ayah-number">{ayah.id}</span>
       {/if}</span
-    >
+    >{isLast ? '' : ' '}
   </span>
 {/snippet}
 
@@ -694,7 +694,7 @@
         {@render ChapterNameAndBasmalah(chapter[1]!)}
         <div class="ayat-wrapper">
           {#each (chapter as [string, Quran.Ayah[]])[1] as ayah, j ((ayah as Quran.Ayah).id)}
-            {@render Ayah(ayah)}
+            {@render Ayah(ayah, j === chapter[1]!.length - 1)}
           {/each}
         </div>
       {/each}
@@ -702,13 +702,13 @@
       {@render ChapterNameAndBasmalah(ayat)}
       <div class="ayat-wrapper">
         {#each ayat as ayah, i (i)}
-          {@render Ayah(ayah)}
+          {@render Ayah(ayah, i === ayat.length - 1)}
         {/each}
       </div>
     {:else}
       <div class="ayat-wrapper">
-        {#each ayat as ayah (ayah.id)}
-          {@render Ayah(ayah)}
+        {#each ayat as ayah, i (ayah.id)}
+          {@render Ayah(ayah, i === ayat.length - 1)}
         {/each}
       </div>
     {/if}
