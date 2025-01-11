@@ -714,7 +714,7 @@
     {/if}
   {/if}
   {#if showReference}
-    {#if !OnlySurahRegex.test(number)}
+    {#if SingleAyahRegex.test(number) || AyahRangeRegex.test(number)}
       <span class="ayah-ref"
         >[{#if showLink}
           <a
