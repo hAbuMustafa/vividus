@@ -760,6 +760,11 @@
     line-height: 2;
   }
 
+  .surah-name,
+  .basmalah {
+    text-align: center;
+  }
+
   .ayat-wrapper {
     display: inline;
   }
