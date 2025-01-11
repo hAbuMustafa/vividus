@@ -682,6 +682,11 @@
   {/if}
 {/snippet}
 
+{#snippet RefText()}
+  {surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
+    : {number.split(':')[1].replace('-', ' - ')}{/if}
+{/snippet}
+
 <div class="quote-wrapper" style={styles}>
   {#if ayat.length}
     {#if MultipleAyahRegex.test(number) || MultipleSurahRegex.test(number)}
@@ -708,11 +713,8 @@
           href="https://quran.ksu.edu.sa/index.php?l=en#aya={number
             .split('-')[0]
             .replace(':', '_')}&m=hafs&qaree=husary&trans=en_sh"
-          target="_blank"
-          >{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
-            : {number.split(':')[1].replace('-', ' - ')}{/if}</a
-        >{:else}{surahs[Number(number.split(':')[0]) - 1].name}{#if !showNumbers}
-          : {number.split(':')[1].replace('-', ' - ')}{/if}{/if}]</span
+          target="_blank">{@render RefText()}</a
+        >{:else}{@render RefText()}{/if}]</span
     >
   {/if}
 </div>
