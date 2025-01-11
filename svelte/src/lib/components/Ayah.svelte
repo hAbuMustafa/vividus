@@ -674,13 +674,15 @@
 <div class="quote-wrapper" style={styles}>
   {#if ayat.length}
     {#if MultipleAyahRegex.test(number) || MultipleSurahRegex.test(number)}
-      {#each ayat as ayah, i (`${ayah.chapter}-${ayah.id}`)}
+      {#each Object.entries(Object.groupBy(ayat, (a) => a.chapter as number)) as chapter, i (chapter[0])}
+        <div class="surah-name">سورة {surahs[Number(chapter[0]) - 1].name}</div>
+        {#if chapter[1]?.[0].id === 1 && Number(chapter[0]) !== 9}
+          <div class="basmalah">&#xFDFD;</div>
+        {/if}
         <div class="ayat-wrapper">
-          {#if i === 0 || ayah.chapter !== ayat[i - 1]?.chapter}
-            <div class="surah-name">سورة {surahs[(ayah.chapter as number) - 1].name}</div>
-            <div class="basmalah">&#xFDFD;</div>
-          {/if}
-          {@render Ayah(ayah)}
+          {#each (chapter as [string, Quran.Ayah[]])[1] as ayah, j ((ayah as Quran.Ayah).id)}
+            {@render Ayah(ayah)}
+          {/each}
         </div>
       {/each}
     {:else}
