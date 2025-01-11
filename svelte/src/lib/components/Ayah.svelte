@@ -698,6 +698,13 @@
           {/each}
         </div>
       {/each}
+    {:else if OnlySurahRegex.test(number)}
+      {@render ChapterNameAndBasmalah(ayat)}
+      <div class="ayat-wrapper">
+        {#each ayat as ayah, i (i)}
+          {@render Ayah(ayah)}
+        {/each}
+      </div>
     {:else}
       <div class="ayat-wrapper">
         {#each ayat as ayah (ayah.id)}
@@ -707,15 +714,17 @@
     {/if}
   {/if}
   {#if showReference}
-    <span class="ayah-ref"
-      >[{#if showLink}
-        <a
-          href="https://quran.ksu.edu.sa/index.php?l=en#aya={number
-            .split('-')[0]
-            .replace(':', '_')}&m=hafs&qaree=husary&trans=en_sh"
-          target="_blank">{@render RefText()}</a
-        >{:else}{@render RefText()}{/if}]</span
-    >
+    {#if !OnlySurahRegex.test(number)}
+      <span class="ayah-ref"
+        >[{#if showLink}
+          <a
+            href="https://quran.ksu.edu.sa/index.php?l=en#aya={number
+              .split('-')[0]
+              .replace(':', '_')}&m=hafs&qaree=husary&trans=en_sh"
+            target="_blank">{@render RefText()}</a
+          >{:else}{@render RefText()}{/if}]</span
+      >
+    {/if}
   {/if}
 </div>
 
