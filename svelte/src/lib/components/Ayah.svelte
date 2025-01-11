@@ -673,7 +673,7 @@
 
 {#snippet ChapterNameAndBasmalah(AyahList: Quran.Ayah[])}
   <div class="surah-name">
-    {#if AyahList[0].id > 1}
+    {#if AyahList[0].id > 1 || AyahList.at(-1)!.id < surahs[(AyahList[0].chapter as number) - 1].count}
       من {' '}
     {/if}سورة {surahs[Number(AyahList[0].chapter) - 1].name}
   </div>
