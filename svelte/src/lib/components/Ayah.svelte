@@ -678,7 +678,7 @@
     {/if}سورة {surahs[Number(AyahList[0].chapter) - 1].name}
   </div>
   {#if AyahList[0].id === 1 && Number(AyahList[0].chapter) !== 9}
-    <div class="basmalah">&#xFDFD;</div>
+    <div class="basmalah" aria-label="بسم الله الرحمن الرحيم">&#xFDFD;</div>
   {/if}
 {/snippet}
 
