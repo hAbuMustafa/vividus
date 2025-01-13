@@ -1,9 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  // todo: add Basmalah block and Surah name block if multiple Surahs displayed (don't forget to omit Basmalah for Attawbah)
-  // fix: Surah ref to display all ranges
   // bug: add number validation for Ayah (to be in its Surah's range) and Surah (to be in 1-114)
+  // bug: if requesting the same Surah in a range, don't fetch again
   // todo: add slot display to allow partial Ayah display
 
   const surahs = [
