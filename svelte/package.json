@@ -1,6 +1,6 @@
 {
   "name": "@vividus/svelte",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
@@ -25,11 +25,11 @@
     "!dist/**/*.spec.*"
   ],
   "peerDependencies": {
-    "svelte": "4.0.0"
+    "svelte": "4.0.0",
+    "@sveltejs/kit": "2.50.1"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "7.0.0",
-    "@sveltejs/kit": "2.50.1",
     "@sveltejs/package": "2.5.7",
     "@sveltejs/vite-plugin-svelte": "6.2.4",
     "publint": "^0.3.17",

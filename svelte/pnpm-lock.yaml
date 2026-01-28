@@ -7,13 +7,14 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@sveltejs/kit':
+        specifier: 2.50.1
+        version: 2.50.1(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.48.5)(vite@7.3.1(sass@1.97.3)))(svelte@5.48.5)(typescript@5.9.3)(vite@7.3.1(sass@1.97.3))
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: 7.0.0
         version: 7.0.0(@sveltejs/kit@2.50.1(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.48.5)(vite@7.3.1(sass@1.97.3)))(svelte@5.48.5)(typescript@5.9.3)(vite@7.3.1(sass@1.97.3)))
-      '@sveltejs/kit':
-        specifier: 2.50.1
-        version: 2.50.1(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.48.5)(vite@7.3.1(sass@1.97.3)))(svelte@5.48.5)(typescript@5.9.3)(vite@7.3.1(sass@1.97.3))
       '@sveltejs/package':
         specifier: 2.5.7
         version: 2.5.7(svelte@5.48.5)(typescript@5.9.3)
