@@ -1,6 +1,6 @@
 {
   "name": "@vividus/svelte",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
@@ -25,7 +25,6 @@
     "!dist/**/*.spec.*"
   ],
   "peerDependencies": {
-    "svelte": "4.0.0",
     "@sveltejs/kit": "2.50.1"
   },
   "devDependencies": {
