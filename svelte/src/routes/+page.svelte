@@ -1,18 +1,14 @@
 <script>
-  import Abbr from "$lib/components/Abbr.svelte";
-  import Ayah from "$lib/components/Ayah.svelte";
-  import Component from "$lib/components/docs/ComponentWrapper.svelte";
-  import RadialFlickMenu from "$lib/components/RadialFlickMenu.svelte";
-  import Sparkles from "$lib/components/Sparkles.svelte";
+  import Abbr from '$lib/components/Abbr.svelte';
+  import Ayah from '$lib/components/Ayah.svelte';
+  import Component from '$lib/components/docs/ComponentWrapper.svelte';
+  import RadialFlickMenu from '$lib/components/RadialFlickMenu.svelte';
+  import Sparkles from '$lib/components/Sparkles.svelte';
 </script>
 
 <h2>
   <Sparkles>
-    Components Of VIVIDUS <img
-      src="/logo-simple.png"
-      alt="vividus logo"
-      width="32"
-    />
+    Components Of VIVIDUS <img src="/logo-simple.png" alt="vividus logo" width="32" />
   </Sparkles>
 </h2>
 
@@ -31,21 +27,19 @@
         {title:'about', action:()=>console.log('about')},
         {title:'login', action:()=>alert('login')}
         ]}
-        />`}
-  >
+        />`}>
     {#snippet Result()}
       <RadialFlickMenu
         options={[
           {
-            title: "home",
+            title: 'home',
             action: () => {
-              alert("home");
+              alert('home');
             },
           },
-          { title: "about", action: () => console.log("about") },
-          { title: "login", action: () => alert("login") },
-        ]}
-      />
+          { title: 'about', action: () => console.log('about') },
+          { title: 'login', action: () => alert('login') },
+        ]} />
     {/snippet}
     {#snippet Attrs()}
       <li class="optional">options: MenuItem[]</li>
@@ -61,8 +55,7 @@
   <Component
     name="Abbr"
     usage={`<Abbr title="[m]essenger [R]ibo-[N]ucleic [A]cid" styles="color:red;" />
-    <Abbr title="e[X]tensible [M]arkup [L]anguage" partStyles="color:red;" />`}
-  >
+    <Abbr title="e[X]tensible [M]arkup [L]anguage" partStyles="color:red;" />`}>
     {#snippet Result()}
       <Abbr title="[m]essenger [R]ibo-[N]ucleic [A]cid" styles="color:red;" />
       <Abbr title="e[X]tensible [M]arkup [L]anguage" partStyles="color:red;" />
@@ -88,8 +81,7 @@
 <Ayah number="112" />
 
 <Ayah number="112:2-114:2" />
-`}
-  >
+`}>
     {#snippet Result()}
       <Ayah number="11:2" showLink={true} />
       <hr />
@@ -130,5 +122,11 @@
   hr {
     border: 1px solid black;
     width: 100%;
+  }
+
+  li.optional::after {
+    content: '*';
+    color: salmon;
+    font-weight: 1000;
   }
 </style>
