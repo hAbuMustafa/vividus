@@ -1,6 +1,10 @@
 {
   "name": "@vividus/svelte",
+<<<<<<< HEAD
   "version": "1.0.7",
+=======
+  "version": "1.0.6",
+>>>>>>> 3306acbe83b5686d28d97920aed844b010f91856
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
@@ -25,6 +29,7 @@
     "!dist/**/*.spec.*"
   ],
   "peerDependencies": {
+<<<<<<< HEAD
     "svelte": "^5.55.4",
     "@sveltejs/kit": "^2.57.1"
   },
@@ -39,6 +44,21 @@
     "tslib": "^2.8.1",
     "typescript": "^6.0.2",
     "vite": "^8.0.8"
+=======
+    "@sveltejs/kit": "2.50.1"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "7.0.0",
+    "@sveltejs/package": "2.5.7",
+    "@sveltejs/vite-plugin-svelte": "6.2.4",
+    "publint": "^0.3.17",
+    "sass": "^1.97.3",
+    "svelte": "5.48.5",
+    "svelte-check": "^4.3.5",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+>>>>>>> 3306acbe83b5686d28d97920aed844b010f91856
   },
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
