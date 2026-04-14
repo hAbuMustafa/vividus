@@ -10,7 +10,7 @@ This component uses the native `abbr` tag to render expandable abbreviations in 
 <Abbr title="[m]essenger [R]ibo-[N]ucleic [A]cid" />
 ```
 
-This is to make it more human readable, and to retail the case state and hyphens or other stylizing additions. I mean, in contrary to extracting acronyms as the upper cased letters only, which will not work with abbreviations like "mRNA".
+This is to make it more human readable, retain the case state and hyphens or other stylizing additions. In contrary to extracting acronyms as the upper cased letters only, which will not work with abbreviations like "mRNA".
 
 ## Customization
 
@@ -18,7 +18,7 @@ You can customize bits of the component's behavior and looks by passing in value
 
 ### Customize Transition
 
-You can customize the different parts of the transition. By default, the transition duration is `0.7` seconds, the easing function is `ease-in-out`, and the delay is `0` seconds. You can customize these by passing in the `--duration`, `--easing`, and `--delay` props, respectively.
+You can customize the different parts of the transition. By default, the transition duration is `0.7` seconds, the easing function is `ease-in-out`, and the delay is `0` seconds. You can customize these by passing in the `--duration`, `--easing`, and `--delay` props, respectively. And of course, transitions respects users preference (if `prefers-reduced-motion` was set to `true`).
 
 ```svelte
 <Abbr title="[W]orld [H]ealth [O]rganization" --duration="2s" --easing="cubic-bezier(0.785, 0.135, 0.15, 0.86)" />
@@ -32,14 +32,10 @@ You can override any styles by passing in the `styles` prop.
 <Abbr title="e[X]tensible [M]arkup [L]anguage" styles="color: red; font-weight: bold;" />
 ```
 
-Due the current limitations, the `abbr` tag uses a monospace font list to function properly:
+Under the hood, the component uses the native CSS `interpolate-size: allow-keywords;` to render the relaxed abbreviation if supported by the browser, or it falls back to a monospace font list to function properly:
 
 ```CSS
 font-family: 'Courier New', Courier, monospace;
 ```
 
 Make sure to override the fonts with the ones you want to use in your `styles` prop.
-
-# Known issues
-
-- The need for use of a monospace font.

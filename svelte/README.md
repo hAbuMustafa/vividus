@@ -6,7 +6,7 @@ The svelte version currently has the following components:
 
 ## Components
 
-- [Abbr](./src/lib/components/Abbr.md): a **higher level version** of HTML's `abbr` element that requires _less writing_, and more "<u>lively</u>" transition. With multiple customizations to the ccomponent display and behavior.
+- [Abbr](./src/lib/components/Abbr.md): a **supercharged**, customizable `abbr` element that lets you write _less code_, and pleases your brain with a whimsy transition.
 
 ## Planned Components
 
