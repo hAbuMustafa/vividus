@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
+  import type { Snippet } from "svelte";
 
   interface Props {
     name: string;
@@ -12,7 +12,7 @@
 </script>
 
 <div class="component-item">
-  <h2>{name}</h2>
+  <h2 id={name.replace(" ", "-")}>{name}</h2>
 
   <h3>Usage:</h3>
   <pre>
@@ -74,7 +74,7 @@
     align-items: center;
     gap: 0.25rem;
 
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     list-style: none;
 
     > :global(li) {
