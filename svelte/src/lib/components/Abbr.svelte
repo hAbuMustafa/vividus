@@ -10,17 +10,17 @@
 
   let {
     title,
-    styles = '',
-    partStyles = '',
-    segmentStyles = '',
+    styles = "",
+    partStyles = "",
+    segmentStyles = "",
     useTitle = true,
-    useTransition = true
+    useTransition = true,
   }: Props = $props();
 
-  const cleanTitle = title.replace(/[\[\]]/g, '');
-  const shift = title.charAt(0) !== '[';
+  const cleanTitle = $derived(title.replace(/[\[\]]/g, ""));
+  const shift = $derived(title.charAt(0) !== "[");
 
-  const segments = title.match(/[^\[\]]+/g)!;
+  const segments = $derived(title.match(/[^\[\]]+/g));
 </script>
 
 <abbr
@@ -58,31 +58,39 @@
   {/each}
 </abbr>
 
-<style lang="scss">
+<style>
   abbr {
-    font-family: monospace;
+    interpolate-size: allow-keywords;
     text-decoration: none;
+
+    @supports not (interpolate-size: allow-keywords) {
+      font-family: monospace;
+    }
   }
 
-  abbr .part {
+  abbr span {
     vertical-align: text-bottom;
   }
 
   abbr .rest {
     display: inline-block;
     overflow-x: hidden;
-    vertical-align: text-bottom;
 
     width: 0;
   }
 
   abbr.useTransition .rest {
     @media (prefers-reduced-motion: no-preference) {
-      transition: width var(--duration, 0.7s) var(--easing, ease-in-out) var(--delay, 0s);
+      transition: width var(--duration, 0.7s) var(--easing, ease-in-out)
+        var(--delay, 0s);
     }
   }
 
   abbr:is(:hover, :active) .rest {
-    width: var(--full-width);
+    width: auto;
+
+    @supports not (interpolate-size: allow-keywords) {
+      width: var(--full-width);
+    }
   }
 </style>
